@@ -19,14 +19,23 @@ services:
    depends_on:
    - catalogue
    - user
+   - cart
    
   redis:
    image: redis
+
   user:
    image: mbhargavi449/user:v1
    container_name: user
    depends_on:
    - mongodb
    - redis
+   
+  cart:
+   image: mbhargavi449/cart:v1
+   container_name: cart
+   depends_on:
+   - redis
+   - catalogue 
   
 

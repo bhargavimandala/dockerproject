@@ -20,6 +20,9 @@ services:
    - catalogue
    - user
    - cart
+   - mysql
+   - shipping
+  
    
   redis:
    image: redis
@@ -30,12 +33,20 @@ services:
    depends_on:
    - mongodb
    - redis
-   
+
   cart:
    image: mbhargavi449/cart:v1
    container_name: cart
    depends_on:
    - redis
-   - catalogue 
+   - catalogue
+  mysql:
+   image: mbhargavi449/mysql:v1
+   container_name: mysql
+  shipping:
+   image: mbhargavi449/shipping:v1
+   container_name: shipping
+   depends_on:
+   - mysql   
   
 
